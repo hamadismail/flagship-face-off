@@ -1,6 +1,7 @@
 import React from 'react';
 import NavList from './NavList';
 import { MdBookmarks, MdShoppingCart } from 'react-icons/md';
+import { Link } from 'react-router';
 
 const Navbar = () => {
   const listData = [
@@ -51,7 +52,9 @@ const Navbar = () => {
               <ul className="flex">{iconLists}</ul>
             </ul>
           </div>
-          <a className="cursor-pointer text-xl font-medium">FlagshipFaceOff</a>
+          <Link to="/" className="cursor-pointer text-xl font-medium">
+            FlagshipFaceOff
+          </Link>
         </div>
 
         <div className="navbar-end hidden lg:flex">

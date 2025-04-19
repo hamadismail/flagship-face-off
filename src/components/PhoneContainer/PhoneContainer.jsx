@@ -25,7 +25,10 @@ const PhoneContainer = ({ phones }) => {
       <div className="flex justify-center mb-8">
         <Button
           type="submit"
-          onClick={() => setShowAll(prev => !prev)}
+          onClick={() => {
+            setShowAll(prev => !prev);
+            showAll && window.scrollTo({ top: 400, behavior: 'smooth' });
+          }}
           label={showAll ? 'Show Less' : 'Show All'}
         />
       </div>
