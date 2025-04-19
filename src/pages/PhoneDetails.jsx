@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useLoaderData, useParams } from 'react-router';
 import './phonedetails.css';
 import Button from '../components/ui/Button';
 import { MdBookmarkAdd, MdShoppingCartCheckout } from 'react-icons/md';
 import { CartContext } from '../providers/Contexts';
+import { addCartItems, getCartItems } from '../utils/localstorage';
 
 const PhoneDetails = () => {
   const phones = useLoaderData();
@@ -11,7 +12,8 @@ const PhoneDetails = () => {
   const { setCarts } = useContext(CartContext);
 
   const handleCarts = () => {
-    setCarts(prev => prev + 1);
+    addCartItems(singlePhone.id);
+    setCarts(getCartItems());
   };
 
   const singlePhone = phones.find(phone => phone.id === parseInt(phoneId));
