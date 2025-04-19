@@ -3,7 +3,7 @@ import { NavLink } from 'react-router';
 
 const NavList = ({ list }) => {
   return (
-    <li>
+    <li className="text-lg">
       <NavLink to={list.path}>{list.name}</NavLink>
     </li>
   );

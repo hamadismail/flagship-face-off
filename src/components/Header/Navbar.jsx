@@ -1,12 +1,13 @@
 import React from 'react';
 import NavList from './NavList';
+import { MdBookmarks, MdShoppingCart } from 'react-icons/md';
 
 const Navbar = () => {
   const listData = [
     { id: 1, name: 'Home', path: '/' },
     { id: 2, name: 'About', path: '/about' },
-    { id: 3, name: 'Cart', path: '/cart' },
-    { id: 4, name: 'Favourite', path: '/favourite' },
+    { id: 3, name: <MdShoppingCart />, path: '/cart' },
+    { id: 4, name: <MdBookmarks />, path: '/favourite' },
   ];
 
   const lists = listData.map(list => <NavList key={list.id} list={list} />);
@@ -44,7 +45,7 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-end hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{lists}</ul>
+          <ul className="menu menu-horizontal px-1 items-center">{lists}</ul>
         </div>
       </div>
     </div>
