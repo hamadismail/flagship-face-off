@@ -16,7 +16,7 @@ const Banner = () => {
 
       <form className="flex flex-col md:flex-row justify-center gap-2 w-full items-center">
         <input
-          className="bg-white px-4 h-12 border border-gray-300 rounded-md focus:outline-none w-full md:w-3/5 text-center"
+          className="bg-white px-4 h-12 border border-gray-300 rounded-md focus:outline-gray-300 w-full md:w-3/5 text-center"
           type="text"
           placeholder="Search Phone By Name"
         />
