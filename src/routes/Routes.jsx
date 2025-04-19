@@ -4,6 +4,7 @@ import ErrorPage from '../pages/ErrorPage';
 import Home from '../pages/Home';
 import { PulseLoader } from 'react-spinners';
 import PhoneDetails from '../pages/PhoneDetails';
+import About from '../pages/About';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
           <PulseLoader className="mt-8 text-center" color="#2f4f4f" />
         ),
         loader: () => fetch('../phones.json'),
+      },
+      {
+        path: 'about',
+        Component: About,
       },
       {
         path: 'phone-details/:phoneId',

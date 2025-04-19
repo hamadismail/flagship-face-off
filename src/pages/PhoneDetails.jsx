@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLoaderData, useParams } from 'react-router';
 import './phonedetails.css';
 import Button from '../components/ui/Button';
 import { MdBookmarkAdd, MdShoppingCartCheckout } from 'react-icons/md';
+import { CartContext } from '../providers/Contexts';
 
 const PhoneDetails = () => {
   const phones = useLoaderData();
   const { phoneId } = useParams();
+  const { setCarts } = useContext(CartContext);
+
+  const handleCarts = () => {
+    setCarts(prev => prev + 1);
+  };
 
   const singlePhone = phones.find(phone => phone.id === parseInt(phoneId));
   const {
@@ -65,7 +71,7 @@ const PhoneDetails = () => {
           </div>
 
           <div className="flex gap-2 mt-4">
-            <Button label={<MdShoppingCartCheckout />} />
+            <Button onClick={handleCarts} label={<MdShoppingCartCheckout />} />
             <Button label={<MdBookmarkAdd />} />
           </div>
         </div>

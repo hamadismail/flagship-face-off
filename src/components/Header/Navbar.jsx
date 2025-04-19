@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import NavList from './NavList';
 import { MdBookmarks, MdShoppingCart } from 'react-icons/md';
 import { Link } from 'react-router';
+import { CartContext } from '../../providers/Contexts';
 
 const Navbar = () => {
+  const { carts } = useContext(CartContext);
   const listData = [
     { id: 1, name: 'Home', path: '/' },
     { id: 2, name: 'About', path: '/about' },
@@ -12,8 +14,19 @@ const Navbar = () => {
   const lists = listData.map(list => <NavList key={list.id} list={list} />);
 
   const iconList = [
-    { id: 3, name: <MdShoppingCart />, path: '/cart' },
-    { id: 4, name: <MdBookmarks />, path: '/favourite' },
+    {
+      id: 1,
+      name: (
+        <div className="relative">
+          <MdShoppingCart />
+          <p className="absolute -top-3 -right-2 text-sm">
+            {carts.length > 0 && carts.length}
+          </p>
+        </div>
+      ),
+      path: '/cart',
+    },
+    { id: 2, name: <MdBookmarks />, path: '/favourite' },
   ];
 
   const iconLists = iconList.map(icon => <NavList key={icon.id} list={icon} />);
