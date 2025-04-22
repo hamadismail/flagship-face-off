@@ -5,6 +5,7 @@ import Home from '../pages/Home';
 import { PulseLoader } from 'react-spinners';
 import PhoneDetails from '../pages/PhoneDetails';
 import About from '../pages/About';
+import Carts from '../pages/Carts';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,14 @@ const router = createBrowserRouter([
       {
         path: 'about',
         Component: About,
+      },
+      {
+        path: 'carts',
+        Component: Carts,
+        hydrateFallbackElement: (
+          <PulseLoader className="mt-8 text-center" color="#2f4f4f" />
+        ),
+        loader: () => fetch('../phones.json'),
       },
       {
         path: 'phone-details/:phoneId',

@@ -1,15 +1,20 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import NavList from './NavList';
 import { MdBookmarks, MdShoppingCart } from 'react-icons/md';
 import { Link } from 'react-router';
 import { CartContext } from '../../providers/Contexts';
+import { getCartItems } from '../../utils/localstorage';
 
 const Navbar = () => {
-  const { carts } = useContext(CartContext);
+  const { carts, setCarts } = useContext(CartContext);
   const listData = [
     { id: 1, name: 'Home', path: '/' },
     { id: 2, name: 'About', path: '/about' },
   ];
+
+  useEffect(() => {
+    setCarts(getCartItems());
+  }, []);
 
   const lists = listData.map(list => <NavList key={list.id} list={list} />);
 
@@ -24,7 +29,7 @@ const Navbar = () => {
           </p>
         </div>
       ),
-      path: '/cart',
+      path: '/carts',
     },
     { id: 2, name: <MdBookmarks />, path: '/favourite' },
   ];
